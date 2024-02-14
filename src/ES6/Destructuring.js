@@ -18,9 +18,8 @@ const Destructuring = () => {
     brand,
     models,
     type,
-    year,
     color,
-    registration: { city, state, country },
+    registration: { city, country },
   } = vehicletwo;
 
   const vehicles = ["mustang", "f-150 ", " expedition"];
