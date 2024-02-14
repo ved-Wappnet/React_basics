@@ -22,13 +22,13 @@ const NormalForm = () => {
   const [fileObjectURL, setFileObjectURL] = useState("");
 
   const handleFileChange = (event) => {
+    console.log(event.target.files[0]);
     const file = event.target.files[0];
     setSelectedFile(file);
     const objectURL = URL.createObjectURL(file);
     setFileObjectURL(objectURL);
   };
 
-  
   const { values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     onSubmit: (data) => {
@@ -201,14 +201,14 @@ const NormalForm = () => {
         <input type="submit" value="Submit" />
       </form>
 
-      {selectedFile && (
+      {selectedFile ? (
         <div>
           <h2>File Preview:</h2>
           <a href={fileObjectURL} target="_blank">
             Preview {selectedFile.name}
           </a>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

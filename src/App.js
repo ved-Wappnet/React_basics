@@ -7,6 +7,9 @@ import Mapmethod from "./ES6/Map";
 import Model from "./ES6/Model";
 import Formikform from "./Formikform";
 import NormalForm from "./Forms/NormalForm";
+import UseEffecthook from "./Hooks/UseEffecthook";
+import UseRefhook from "./Hooks/UseRefhook";
+import Usestatehook from "./Hooks/Usestatehook";
 import UserRegistration from "./UseForm+Yup/UserRegistration";
 import Useform from "./Useform";
 
@@ -34,6 +37,10 @@ function App() {
       {/* <div style={{ width: "900px", margin: "50px auto" }}>
         <UserRegistration />
       </div> */}
+
+      {/* <Usestatehook/> */}
+      {/* <UseEffecthook /> */}
+      <UseRefhook />
     </div>
   );
 }
