@@ -105,7 +105,7 @@ const Usestatehook = () => {
       </p> */}
 
       {/* Example - 4 ==> Form (object)   */}
-      {/* 
+      
       <label>
         <input
           type="text"
@@ -132,7 +132,7 @@ const Usestatehook = () => {
       </label>
       <p>
         {form.firstName} {form.lastName} ({form.email})
-      </p> */}
+      </p>
 
       {/* Example - 5 ==> Form (nested object)   */}
 
@@ -165,7 +165,7 @@ const Usestatehook = () => {
         style={{ width: "20%", height: "20%" }}
         alt={person.artwork.title}
       />
-      
+
     </div>
   );
 };
