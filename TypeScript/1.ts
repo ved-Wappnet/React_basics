@@ -297,9 +297,11 @@ type PersonInfo = readonly [string, number, boolean]; // the readOnly property d
 
 const displayInfo = (person: PersonInfo) => {
   const [name, age, isStudent] = person;
-  console.log(`Name: ${name} , Age : ${age} , isStudent:${isStudent ? "YES" : "NO"}`);
+  console.log(
+    `Name: ${name} , Age : ${age} , isStudent:${isStudent ? "YES" : "NO"}`
+  );
 };
 
-const person1:PersonInfo = ["ved", 7, true];
+const person1: PersonInfo = ["ved", 7, true];
 
 displayInfo(person1);
