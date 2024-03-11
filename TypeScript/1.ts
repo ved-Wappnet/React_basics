@@ -72,7 +72,7 @@ if (typeof num2 === "number") {
 }
 
 async function fetchData(): Promise<unknown> {
-  const response = await fetch("https://randomuser.me/api?results=5");
+  const response = await fetch("https://randomPerson1.me/api?results=5");
   const data = await response.json();
   return data;
 }
@@ -250,8 +250,8 @@ let product1: Product = {
   quantity: 5,
 };
 
-const CalculateTotalPrice = (product1: Product) => {
-  return product1.price * product1.quantity;
+const CalculateTotalPrice = (product: Product) => {
+  return product.price * product.quantity;
 };
 
 console.log(CalculateTotalPrice(product1));
@@ -304,4 +304,160 @@ const displayInfo = (person: PersonInfo) => {
 
 const person1: PersonInfo = ["ved", 7, true];
 
-displayInfo(person1);
+// displayInfo(person1);
+
+//                     *********** UNION AND INTERSECTION ********
+
+// 1 - Union
+
+const inputvalue = (value: string | number) => {
+  if (typeof value === "number") {
+    return value * 2;
+  } else if (typeof value === "string") {
+    return value.toUpperCase();
+  }
+};
+
+// console.log(inputvalue(2));
+// console.log(inputvalue("Hello World"));
+
+// practice
+
+const format = (value: number | boolean | string) => {
+  if (typeof value === "number") {
+    return `$${value}`;
+  } else if (typeof value === "boolean") {
+    return value ? "yes" : "no";
+  } else if (typeof value === "string") {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+};
+// console.log(format(true));
+// console.log(format(false));
+// console.log(format("ram"));
+// console.log(format(12));
+
+// 2 - Intersection
+
+type Person1 = {
+  name: string;
+  age: number;
+};
+
+type Employee = {
+  employ_id: number;
+  department: string;
+};
+
+type EmployeeDetails = Person1 & Employee;
+
+const employee1: EmployeeDetails = {
+  name: "Ved",
+  age: 20,
+  employ_id: 123456789,
+  department: "IT",
+};
+
+// practice
+
+type User = {
+  name: string;
+  age: number;
+};
+
+type Mylocation = {
+  city: string;
+  country: string;
+};
+
+const user: User = { name: "Ved", age: 20 };
+const mylocation: Mylocation = { city: "Ahemdabad", country: "India" };
+
+const createUserProfile = (user: User, location: Mylocation) => {
+  // return `My name is ${user.name} and i am living at : ${location.city}`;
+  return { ...user, ...location };
+};
+
+const Details: User & Mylocation = createUserProfile(user, mylocation);
+console.log(Details);
+
+// practice
+
+type UserInfo = {
+  name: string;
+  email: string;
+};
+
+type AccountInfo = {
+  acc_id: number;
+  acc_type: string;
+  balance: number;
+};
+
+const user1: UserInfo = { name: "Ved", email: "ved.wappnet@gmail.com" };
+const Accout: AccountInfo = { acc_id: 7, acc_type: "Saving", balance: 12000 };
+
+const combineUserAndAccount = (user: UserInfo, account: AccountInfo) => {
+  return { ...user, ...account };
+};
+
+const UAndAccDetails: UserInfo & AccountInfo = combineUserAndAccount(
+  user1,
+  Accout
+);
+console.log(UAndAccDetails);
+
+//            ***************** GENERICES ******************
+
+const logAndReturn = <T>(value: T): T => {
+  return value;
+}
+
+const numberResult = logAndReturn(42)
+const stringResult = logAndReturn("Hey! TypeScript");
+const booleanResult = logAndReturn(true)
+
+console.log(numberResult);
+console.log(stringResult);
+console.log(booleanResult);
+
+
+// SOLVING FUNCTION OVERLOADING WITH TS IN GENERICES
+
+// function add(a: number, b: number): number;
+// function add(a: string, b: string): string;
+// function add(a: any, b: any): any {
+//   return a + b;
+// }
+
+function add<T, U>(a: T, b: U) {
+  console.log(typeof a);
+  console.log(typeof b);
+
+}
+
+const result1 = add(5, "chnager")
+const result2 = add("ved", "panchal")
+
+//              ******** INTERFACE ************
+
+interface Greet {
+  name: string;
+  age: number;
+}
+
+const greetting: Greet = {
+  name: "ved",
+  age: 20
+}
+
+const funcgreet = (Info: Greet) => {
+  // return `Welcome ${Info.name} and Age is ${Info.age}`
+  const {name , age} = Info;
+  return {name , age}
+}
+
+console.log(funcgreet(greetting));
+
+
+

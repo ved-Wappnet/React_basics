@@ -17,7 +17,14 @@ import { UserProvider } from "./Hooks/usecontext-hook/UserProvider";
 import UserRegistration from "./UseForm+Yup/UserRegistration";
 import Useform from "./Useform";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  MemoryRouter as Router,
+  Routes,
+  Route,
+  createRoutesFromElements,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -36,6 +43,14 @@ import "primeicons/primeicons.css";
 import DemoPrime from "./primereact/Navbar";
 import PageChakra from "./ChakraUI/PageChakra";
 import MaterialDemo from "./Material-Ui/MaterialDemo";
+import Rthunk from "./ReactThunk/Rthunk";
+import Errorpage from "./components/Errorpage";
+import TestReact from "./components/TestReact";
+import Stepper from "./stepper/Stepper";
+import Addvalue from "./addvalue/Addvalue";
+import Carousel from "./Carousel";
+import Data from "./components/Data";
+import QuizApp from "./QuizApp/QuizApp";
 
 function App() {
   const posts = [
@@ -66,6 +81,18 @@ function App() {
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to]);
   };
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />} errorElement={<Errorpage />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="*" element={<Nopage />} /> */}
+        <Route path="/user/:username" element={<User />} />
+      </Route>
+    )
+  );
 
   return (
     <>
@@ -105,6 +132,17 @@ function App() {
           </Route>
         </Routes>
       </Router> */}
+
+      {/* <RouterProvider router={router} /> */}
+
+      {/* <TestReact /> */}
+
+      {/* <Stepper /> */}
+
+      {/* <Addvalue /> */}
+      {/* <Data /> */}
+      <QuizApp/>
+      {/* <Carousel /> */}
 
       {/* <App2 /> */}
       {/* <div
@@ -160,10 +198,11 @@ function App() {
           </div>
         </div>
       </div> */}
-
+      {/* 
       <DemoPrime /> 
-       <PageChakra /> 
+       <PageChakra />  */}
       {/* <MaterialDemo /> */}
+      {/* <Rthunk/> */}
     </>
   );
 }

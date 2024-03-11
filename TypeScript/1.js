@@ -54,7 +54,7 @@ else if (typeof num2 === "boolean") {
     console.log(num2);
 }
 async function fetchData() {
-    const response = await fetch("https://randomuser.me/api?results=5");
+    const response = await fetch("https://randomPerson1.me/api?results=5");
     const data = await response.json();
     return data;
 }
@@ -169,8 +169,8 @@ let product1 = {
     price: 130000,
     quantity: 5,
 };
-const CalculateTotalPrice = (product1) => {
-    return product1.price * product1.quantity;
+const CalculateTotalPrice = (product) => {
+    return product.price * product.quantity;
 };
 console.log(CalculateTotalPrice(product1));
 const student1 = {
@@ -195,4 +195,81 @@ const displayInfo = (person) => {
     console.log(`Name: ${name} , Age : ${age} , isStudent:${isStudent ? "YES" : "NO"}`);
 };
 const person1 = ["ved", 7, true];
-displayInfo(person1);
+// displayInfo(person1);
+//                     *********** UNION AND INTERSECTION ********
+// 1 - Union
+const inputvalue = (value) => {
+    if (typeof value === "number") {
+        return value * 2;
+    }
+    else if (typeof value === "string") {
+        return value.toUpperCase();
+    }
+};
+// console.log(inputvalue(2));
+// console.log(inputvalue("Hello World"));
+// practice
+const format = (value) => {
+    if (typeof value === "number") {
+        return `$${value}`;
+    }
+    else if (typeof value === "boolean") {
+        return value ? "yes" : "no";
+    }
+    else if (typeof value === "string") {
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+};
+const employee1 = {
+    name: "Ved",
+    age: 20,
+    employ_id: 123456789,
+    department: "IT",
+};
+const user = { name: "Ved", age: 20 };
+const mylocation = { city: "Ahemdabad", country: "India" };
+const createUserProfile = (user, location) => {
+    // return `My name is ${user.name} and i am living at : ${location.city}`;
+    return { ...user, ...location };
+};
+const Details = createUserProfile(user, mylocation);
+console.log(Details);
+const user1 = { name: "Ved", email: "ved.wappnet@gmail.com" };
+const Accout = { acc_id: 7, acc_type: "Saving", balance: 12000 };
+const combineUserAndAccount = (user, account) => {
+    return { ...user, ...account };
+};
+const UAndAccDetails = combineUserAndAccount(user1, Accout);
+console.log(UAndAccDetails);
+//            ***************** GENERICES ******************
+const logAndReturn = (value) => {
+    return value;
+};
+const numberResult = logAndReturn(42);
+const stringResult = logAndReturn("Hey! TypeScript");
+const booleanResult = logAndReturn(true);
+console.log(numberResult);
+console.log(stringResult);
+console.log(booleanResult);
+// SOLVING FUNCTION OVERLOADING WITH TS IN GENERICES
+// function add(a: number, b: number): number;
+// function add(a: string, b: string): string;
+// function add(a: any, b: any): any {
+//   return a + b;
+// }
+function add(a, b) {
+    console.log(typeof a);
+    console.log(typeof b);
+}
+const result1 = add(5, "chnager");
+const result2 = add("ved", "panchal");
+const greetting = {
+    name: "ved",
+    age: 20
+};
+const funcgreet = (Info) => {
+    // return `Welcome ${Info.name} and Age is ${Info.age}`
+    const { name, age } = Info;
+    return { name, age };
+};
+console.log(funcgreet(greetting));

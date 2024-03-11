@@ -2,7 +2,7 @@ import React from 'react'
 
 const Blog = () => {
   return (
-    <div>Blog</div>
+    <div className="mt-8 flex justify-center items-center">Blog</div>
   )
 }
 
